@@ -4,6 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+var target = document.getElementById('target')
+var wrapper = document.createElement('div')
+var headline = document.createElement('h1')
+
+wrapper.id = "welcome"
+headline.innerText = "Hello World"
+
+wrapper.appendChild(headline)
+target.appendChild(wrapper);
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
