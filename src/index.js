@@ -4,18 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const { render } = ReactDOM
-
-const Welcome = () => (
-  <div id = "welcome">
-    <h1>Hello, World!</h1>
-  </div>
-)
-
-render(
-  <Welcome />,
-  document.getElementById('target')
-)
+var log = function(message) {
+  console.log(message)
+}
+log("자바스크립트에서는 함수를 변수에 넣을 수 있습니다.")
 
 ReactDOM.render(
   <React.StrictMode>
