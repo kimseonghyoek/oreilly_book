@@ -4,15 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-var target = document.getElementById('target')
-var wrapper = document.createElement('div')
-var headline = document.createElement('h1')
+const { render } = ReactDOM
 
-wrapper.id = "welcome"
-headline.innerText = "Hello World"
+const Welcome = () => (
+  <div id = "welcome">
+    <h1>Hello, World!</h1>
+  </div>
+)
 
-wrapper.appendChild(headline)
-target.appendChild(wrapper);
+render(
+  <Welcome />,
+  document.getElementById('target')
+)
 
 ReactDOM.render(
   <React.StrictMode>
