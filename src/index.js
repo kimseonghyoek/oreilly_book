@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-var log = function(message) {
-  console.log(message)
+let color_lawn = {
+  title: "잔디",
+  color: "#00FF00",
+  rating: 0
 }
-log("자바스크립트에서는 함수를 변수에 넣을 수 있습니다.")
+
+function rateColor(color, rating) {
+  color.rating = rating
+  return color
+}
+
+console.log(rateColor(color_lawn, 5).rating)
+console.log(color_lawn.rating)
 
 ReactDOM.render(
   <React.StrictMode>
