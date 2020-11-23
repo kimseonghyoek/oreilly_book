@@ -4,18 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-let color_lawn = {
-  title: "잔디",
-  color: "#00FF00",
-  rating: 0
+let colorArray = [
+  { title : "과격한 빨강"},
+  { title : "잔디"},
+  { title : "파티 핑크"}
+]
+
+var addColor = function(title, colors) {
+  colors.push({ title: title})
+  return colors;
 }
 
-function rateColor(color, rating) {
-  return Object.assign({}, color, {rating:rating})
-}
-
-console.log(rateColor(color_lawn, 5).rating)
-console.log(color_lawn.rateColor)
+console.log(addColor("매력적인 초록", colorArray).length)
+console.log(colorArray.length)
 
 ReactDOM.render(
   <React.StrictMode>
