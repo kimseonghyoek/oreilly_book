@@ -10,10 +10,7 @@ let colorArray = [
   { title : "파티 핑크"}
 ]
 
-var addColor = function(title, colors) {
-  colors.push({ title: title})
-  return colors;
-}
+const addColor = (title, array) => array.concat({title})
 
 console.log(addColor("매력적인 초록", colorArray).length)
 console.log(colorArray.length)
