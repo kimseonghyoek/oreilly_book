@@ -4,16 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-let colorArray = [
-  { title : "과격한 빨강"},
-  { title : "잔디"},
-  { title : "파티 핑크"}
-]
+var frederick = {
+  name: "Fredrerick Doglass",
+  canRead: false,
+  canWrite: false
+}
 
-const addColor = (title, array) => array.concat({title})
+function selfEducate() {
+  frederick.canRead = true
+  frederick.canWrite = true
+  return frederick
+}
 
-console.log(addColor("매력적인 초록", colorArray).length)
-console.log(colorArray.length)
+selfEducate()
+console.log(  frederick  )
 
 ReactDOM.render(
   <React.StrictMode>
