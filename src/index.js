@@ -10,14 +10,14 @@ var frederick = {
   canWrite: false
 }
 
-function selfEducate() {
-  frederick.canRead = true
-  frederick.canWrite = true
-  return frederick
+const selfEducate = (person) => {
+  person.canRead = true;
+  person.canWrite = true;
+  return person
 }
 
-selfEducate()
-console.log(  frederick  )
+console.log( selfEducate(frederick) )
+console.log( frederick )
 
 ReactDOM.render(
   <React.StrictMode>
