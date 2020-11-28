@@ -10,11 +10,12 @@ var frederick = {
   canWrite: false
 }
 
-const selfEducate = (person) => {
-  person.canRead = true;
-  person.canWrite = true;
-  return person
-}
+const selfEducate = (person) =>
+({
+  ...person,
+  canRead: true,
+  canWrite: true
+})
 
 console.log( selfEducate(frederick) )
 console.log( frederick )
