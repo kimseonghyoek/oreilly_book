@@ -4,21 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-var frederick = {
-  name: "Fredrerick Doglass",
-  canRead: false,
-  canWrite: false
+function Header(text) {
+  let h1 = document.createElement('h1');
+  h1.innerHTML = text;
+  document.body.appendChild(h1)
 }
 
-const selfEducate = (person) =>
-({
-  ...person,
-  canRead: true,
-  canWrite: true
-})
-
-console.log( selfEducate(frederick) )
-console.log( frederick )
+Header("Hearder() caused side effects");
 
 ReactDOM.render(
   <React.StrictMode>
