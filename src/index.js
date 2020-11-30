@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-function Header(text) {
-  let h1 = document.createElement('h1');
-  h1.innerHTML = text;
-  document.body.appendChild(h1)
-}
+const schools = [
+  "Yorktown",
+  "Washington & Lee",
+  "Wakefield"
+]
 
-Header("Hearder() caused side effects");
+console.log( schools.join(", ") )
+
 
 ReactDOM.render(
   <React.StrictMode>
