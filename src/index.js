@@ -10,9 +10,11 @@ const schools = [
   "Wakefield"
 ]
 
-const wSchools = schools.filter(school => school[0] === "W");
+const cutSchool = (cut, list) =>
+  list.filter(school => school !== cut)
 
-console.log( wSchools )
+console.log(cutSchool("Washington & Lee", schools).join(" * "))
+console.log(schools.join("\n"));
 
 
 ReactDOM.render(
