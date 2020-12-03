@@ -4,15 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const schools = [
+const editName = (oldName, name, arr) =>
+  arr.map(item => {
+    if (item.name === oldName) {
+      return {
+        ...item,
+        name
+      }
+    } else {
+      return item
+    }
+  })
+
+let schools = [
   "Yorktown",
   "Washington & Lee",
   "Wakefield"
 ]
 
-const highSchools = schools.map(school => ({ name : school}));
+let updatedSchools = editName("Stratford", "HB Woodlawn", schools)
 
-console.log(highSchools)
+console.log( updatedSchools[1] )
+console.log(schools[1])
 
 
 ReactDOM.render(
