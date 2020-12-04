@@ -5,16 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const editName = (oldName, name, arr) =>
-  arr.map(item => {
-    if (item.name === oldName) {
-      return {
-        ...item,
-        name
-      }
-    } else {
-      return item
-    }
-  })
+  arr.map(item => (item.name === oldName) ?
+  ({...item,name}) :
+  item
+  )
 
 let schools = [
   "Yorktown",
