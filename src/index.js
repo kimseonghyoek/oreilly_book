@@ -4,22 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const editName = (oldName, name, arr) =>
-  arr.map(item => (item.name === oldName) ?
-  ({...item,name}) :
-  item
-  )
-
 let schools = [
-  "Yorktown",
-  "Washington & Lee",
-  "Wakefield"
+  { name: "Yorktown" },
+  { name: "Stratford" },
+  { name: "Washington & Lee" },
+  { name: "Wakefield" },
 ]
 
-let updatedSchools = editName("Stratford", "HB Woodlawn", schools)
+const editNth = (n, name, arr) =>
+  arr.map( (item, i) =>( i === n) ?
+  ({...item, name}) :
+  item
+)
 
-console.log( updatedSchools[1] )
-console.log(schools[1])
+let updatedSchools2 = editNth(2, "Mansfield", schools)
+
+console.log( updatedSchools2[2] )
+console.log(schools[2])
 
 
 ReactDOM.render(
