@@ -4,20 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const schools = {
-  "Yorktown": 10,
-  "Washingto & Lee": 2,
-  "Wakefield": 5
-}
+const ages = [21, 18, 42, 40, 64, 63, 34]
 
-const schoolArray = Object.keys(schools).map(key =>
-  ({
-    name: key,
-    wins: schools[key]
-  })
-)
+const maxAge = ages.reduce((max, age) => {
+  console.log(`${age} > ${max} = ${age > max}`)
+  if (age > max) {
+    return age
+  } else {
+    return max
+  }
+}, 0)
 
-console.log(schoolArray)
+console.group('maxAge', maxAge);
 
 
 ReactDOM.render(
