@@ -4,23 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-let schools = [
-  { name: "Yorktown" },
-  { name: "Stratford" },
-  { name: "Washington & Lee" },
-  { name: "Wakefield" },
-]
+const schools = {
+  "Yorktown": 10,
+  "Washingto & Lee": 2,
+  "Wakefield": 5
+}
 
-const editNth = (n, name, arr) =>
-  arr.map( (item, i) =>( i === n) ?
-  ({...item, name}) :
-  item
+const schoolArray = Object.keys(schools).map(key =>
+  ({
+    name: key,
+    wins: schools[key]
+  })
 )
 
-let updatedSchools2 = editNth(2, "Mansfield", schools)
-
-console.log( updatedSchools2[2] )
-console.log(schools[2])
+console.log(schoolArray)
 
 
 ReactDOM.render(
