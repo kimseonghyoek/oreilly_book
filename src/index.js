@@ -4,19 +4,38 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const ages = [21, 18, 42, 40, 64, 63, 34]
-
-const maxAge = ages.reduce((max, age) => {
-  console.log(`${age} > ${max} = ${age > max}`)
-  if (age > max) {
-    return age
-  } else {
-    return max
+const colors = [
+  {
+    id: '-xekare',
+    title: "과격한 빨강",
+    rating: 3
+  },
+  {
+    id: '-jbwsof',
+    title: "큰 파랑",
+    rating: 2
+  },
+  {
+    id: '-prigbj',
+    title: "회색곰 회색",
+    rating: 5
+  },
+  {
+    id: '-ryhbhsl',
+    title: "바나나",
+    rating: 1
   }
-}, 0)
+]
 
-console.group('maxAge', maxAge);
+const hashColors = colors.reduce(
+  (hash, {id, title, rating}) => {
+    hash[id] = {title, rating}
+    return hash
+  },
+  {}
+)
 
+console.log(hashColors)
 
 ReactDOM.render(
   <React.StrictMode>
