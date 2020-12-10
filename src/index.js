@@ -17,7 +17,7 @@ const getFakeMembers = count => new Promise((resolves, rejects) => {
 })
 
 const userLogs = userName => message =>
-  console.log(`$(userName) -> ${message}`)
+  console.log(`${userName} -> ${message}`)
 
 const log = userLogs("grandPa23")
 
