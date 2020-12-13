@@ -4,28 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const getFakeMembers = count => new Promise((resolves, rejects) => {
-  const api = `https://api.randomuser.me/?nat=US&results=${count}`
-  const request = new XMLHttpRequest()
-  request.open('GET', api)
-  request.onload = () =>
-  (request.status === 200) ?
-  resolves(JSON.parse(request.response).results) :
-  rejects(Error(request.statusText))
-  request.onerror = (err) => rejects(err)
-  rejects.send()
-})
+const countdown = (value, fn) => {
+  fn(value)
+  return (value > 0) ? countdown(value-1, fn) : value
+}
 
-const userLogs = userName => message =>
-  console.log(`${userName} -> ${message}`)
-
-const log = userLogs("grandPa23")
-
-log("attempted to load 20 fake members")
-getFakeMembers(20).then(
-  members => log(`successfully load ${members.length} memebers`),
-  error => log("encountered an error loading memebers")
-)
+countdown(10, value => console.log(value))
 
 ReactDOM.render(
   <React.StrictMode>
