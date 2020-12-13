@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const countdown = (value, fn) => {
+const countdown = (value, fn, delay=1000) => {
   fn(value)
-  return (value > 0) ? countdown(value-1, fn) : value
+  return (value > 0) ?
+    setTimeout(() => countdown(value-1, fn), delay) :
+    value
 }
 
-countdown(10, value => console.log(value))
+const log = value => console.log(value)
+countdown(10, log)
 
 ReactDOM.render(
   <React.StrictMode>
