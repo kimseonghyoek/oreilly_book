@@ -4,29 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const deepPick = (fields, object={}) => {
-  const [first, ...remaining] = fields.split(".")
-  return (remaining.length) ?
-    deepPick(remaining.join("."), object[first]) :
-    object[first]
-}
+const template = "hh:mm:ss tt"
+const clockTime = template.replace("hh", "03").replace("mm", "33").replace("ss", "33").replace("tt", "PM")
 
-const dan = {
-  type: "person",
-  data: {
-    gender: "male",
-    info: {
-      id: 22,
-      fullname: {
-        first: "Dan",
-        last: "Deacon"
-      }
-    }
-  }
-}
-
-console.log( deepPick("type", dan))
-console.log( deepPick("data.info.fullname.first", dan))
+console.log(clockTime)
 
 ReactDOM.render(
   <React.StrictMode>
@@ -39,3 +20,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+1
