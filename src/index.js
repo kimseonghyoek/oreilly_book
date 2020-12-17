@@ -4,55 +4,85 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-setInterval(logColcTime, 1000);
+const oneSecond = () => 1000
+const getCurrentTime = () => new Date()
+const clear = () => console.clear()
+const log = message => console.log(message)
 
-function logColcTime() {
-  
-  // 현재 시각을 상용사로 표현하는 문자열을 얻는다.
-  var time = getClockTime();
+const compose = (...fns) =>
+  (arg) =>
+    fns.reduce(
+      (composed, f) => f(composed),
+      arg
+    )
 
-  // 콘솔을 지우고 시간을 로그에 남긴다.
-  console.clear();
-  console.log(time);
-}
-
-function getClockTime() {
-
-  // 현재 시각을 얻는다.
-  var date = new Date;
-  var time = {
+const abstractClockTime = date =>
+  ({
     hours: date.getHours(),
     minutes: date.getMinutes(),
-    seconds: date.getSeconds(),
-    ampm: "AM"
-  }
+    seconds: date.getSeconds()
+  })
 
-  // 상용시로 변환한다,
-  if (time.hours == 12) {
-    time.ampm = "PM";
-  } else if (time.hours > 12) {
-    time.ampm = "PM";
-    time.hours -= 12;
-  }
+const civilianHours = clockTime =>
+  ({
+    ...clockTime,
+    hours: (clockTime.hours > 12) ?
+    clockTime.hours - 12 : clockTime.hours
+  })
 
-  // 시간을 2글자로 만들기 위해 앞에 0을 붙인다.
-  if (time.hours < 10) {
-    time.hours = "0" + time.hours;
-  }
+const appendAPPM = clockTime =>
+  ({
+    ...clockTime,
+    ampm: (clockTime.hours >= 12) ? "PM" : "AM"
+  })
 
-  // 분을 2글자로 만들기 위해 앞에 0을 붙인다.
-  if (time.minutes < 10) {
-    time.minutes = "0" + time.minutes;
-  }
+const display = target => time => target(time)
 
-  // 초를 2글자로 만들기 위해 앞에 0을 붙인다,
-  if (time.seconds < 10) {
-    time.seconds = "0" + time.seconds;
-  }
+const formatClock = format =>
+  time =>
+    format.replace("hh", time.hours)
+      .replace("mm", time.minutes)
+      .replace("ss", time.seconds)
+      .replace("tt", time.ampm)
 
-  // "hh:mm:ss tt" 형식의 분자열을 반들다.
-  return time.hours + ":" + time.minutes + ":" + time.seconds + time.ampm;
-}
+const prependZero = key => clockTime =>
+  ({
+    ...clockTime,
+    [key]: (clockTime[key] < 10) ?
+    "0" + clockTime[key] :
+    clockTime[key]
+  })
+
+
+const convertToCivilianTime = clockTime =>
+  compose(
+    appendAPPM,
+    civilianHours,
+  )(clockTime)
+
+const doubleDigits = civilianTime =>
+    compose(
+      prependZero("hours"),
+      prependZero("minutes"),
+      prependZero("seconds")
+    )(civilianTime)
+
+const startTicking = () =>
+    setInterval(
+      compose(
+        clear,
+        getCurrentTime,
+        abstractClockTime,
+        convertToCivilianTime,
+        doubleDigits,
+        formatClock("hh:mm:ss tt"),
+        display(log)
+      ),
+      oneSecond()
+    )
+
+startTicking()
+
 
 ReactDOM.render(
   <React.StrictMode>
