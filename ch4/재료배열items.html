@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>P.104</title>
+    </head>
+    <body>
+        <!--타깃 컨테이너-->
+        <div class="react-container"></div>
+
+        <div class="react-container">
+            <h1>구운 연어</h1>
+            <ul class="ingredients">
+
+            </ul>
+        </div>
+
+        <!-- React와 ReactDOM 라이브러리 -->
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+        <script>
+            // 순수 리액트와 자바스크립트 코드
+            var dish = React.createElement("h1", null, "구운 연어")
+
+            ReactDOM.render(dish, document.getElementById('react-container'))
+
+            var items = [
+                "연어 500 그램",
+                "잣 1컵",
+                "버터 상추 2컵",
+                "옐로 스쿼시 1개",
+                "올리브 오일 1/2 컵",
+                "마늘 3쪽"
+            ]
+
+            React.createElement(
+                "ul",
+                { className: "ingredients"},
+                items.map(ingredient, i =>
+                React.createElement("li", {key: i}, ingredients))
+            )
+
+
+
+        </script>
+    </body>
+</html>
