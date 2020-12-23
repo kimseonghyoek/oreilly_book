@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>P.106</title>
+        <meta charset="utf8">
+    </head>
+    <body>
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+        <IngredientsList>
+            <ul className="ingredient">
+                <!-- <li>연어 500그램</li>
+                <li>잣 1컵</li>
+                <li>버터 상추 2컵</li>
+                <li>옐로 스쿼시 1개</li>
+                <li>올리브 오일</li>
+                <li>마늘 3쪽</li> -->
+            </ul>
+        </IngredientsList>
+
+        <script>
+            const Ingredient = React.createClass({
+                displayName: "ingredientsList",
+                render() {
+                    return React.createElement("ul", {"className": "ingredients"}),
+                    React.createElement("li", null, "연어500그램"),
+                    React.createElement("li", null, "잣 1컵"),
+                    React.createElement("li", null, "버터 상추 1컵"),
+                    React.createElement("li", null, "옐로 스쿼시");
+                    React.createElement("li", null, "올리브 오일 1/2컵");
+                    React.createElement("li", null, "마늘 3쪽");
+                }
+            })
+
+            const list = React.createElement(Ingredient, null, null)
+
+            ReactDom.render(
+                list,
+                document.getElementById('react-container')
+            )
+        </script>
+    </body>
+</html>
