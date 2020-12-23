@@ -23,19 +23,23 @@
                 displayName: "ingredientsList",
                 render() {
                     return React.createElement("ul", {"className": "ingredients"}),
-                    React.createElement("li", null, "연어500그램"),
-                    React.createElement("li", null, "잣 1컵"),
-                    React.createElement("li", null, "버터 상추 1컵"),
-                    React.createElement("li", null, "옐로 스쿼시");
-                    React.createElement("li", null, "올리브 오일 1/2컵");
-                    React.createElement("li", null, "마늘 3쪽");
+                        this.props.items.map((ingredient, i) =>
+                        React.createElement("li", {key: i}, ingredient)
+                        )
                 }
             })
 
-            const list = React.createElement(Ingredient, null, null)
+            const items = [
+                "연어 500그램",
+                "잣 1컵",
+                "버터 상추 2컵",
+                "옐로 스쿼시 1개",
+                "올리브 오일 1/2컵",
+                "마늘 3쪽"
+            ]
 
             ReactDom.render(
-                list,
+                React.createElement(Ingredient, {items}, null),
                 document.getElementById('react-container')
             )
         </script>
